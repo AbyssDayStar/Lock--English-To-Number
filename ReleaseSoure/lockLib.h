@@ -4,7 +4,7 @@
 
 #ifndef lockLib_h
 #define lockLib_h // 防止重复包含
-#define DEBUG   //调试宏定义，编译时定义此宏以启用调试信息输出
+
 #include <iostream>
 #include <vector>                                               //导入头文件
 using std::vector, std::cout, std::endl, std::cin, std::string; // 使用命名空间中的特定成员
@@ -13,30 +13,6 @@ class baseLock                                                  // 基类
 protected:
     vector<int> charNum;
     string charType; // 定义所需数据成员
-#ifdef DEBUG
-    ~baseLock()
-    {
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Class has members:" << endl;
-        cout << "Character types: ";
-        for (char c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << "Class is free" << endl;
-        cout << endl
-             << endl;
-    }
-#endif // 预留debug析构函数
 };
 class Lock : baseLock // 加密类
 {
@@ -48,25 +24,6 @@ public:
         {
             charNum.push_back(charType.at(i) - '0'-'0');
         }
-#ifdef DEBUG
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Lock created with character types: ";
-        for (char c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Lock created with character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << endl
-             << endl;
-#endif // 预留debug信息
     }
     void print()
     {
@@ -91,25 +48,6 @@ public:
         {
             charType.push_back(charNum.at(i) + '0'+'0');
         }
-#ifdef DEBUG
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Lock created with character types: ";
-        for (char c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Lock created with character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << endl
-             << endl;
-#endif // 预留debug信息
     }
     void print()
     {

@@ -3,9 +3,6 @@
 bool run = true;// 控制主循环
 int main()
 {
-#ifdef DEBUG
-    cout << "It is [DEBUG]" << endl;
-#endif// 调试信息
     while (run)// 主循环开始
     {
         cout << "Continue? (y/n): " << endl;// 询问是否继续
