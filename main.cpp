@@ -17,8 +17,45 @@ int main()
         }
         else if (choice == 'y' || choice == 'Y')
         {
+            #ifdef _WIN32
+            system("cls");
+            #elif __linux__ or __APPLE__  
             system("clear");
-            cout << "Enter lock character types (e.g., 'abc' for a lock with):" << endl;
+            #elif __unix__
+            system("clear");
+            #endif
+            cout<<"Lock or UnLock? (l/u): "<<endl;
+            cin>>choice;
+            if(choice=='l'||choice=='L')
+            {
+                cout<<"Input types(string): "<<endl;
+                string types;
+                cin>>types;
+                Lock myLock(types);
+                myLock.print();
+            }
+            else if(choice=='u'||choice=='U')
+            {
+                cout<<"Input numbers(separated by space, end with -1): "<<endl;
+                vector<int> input;
+                int num;
+                while(true)
+                {
+                    cin>>num;
+                    if(num==-1) break;
+                    input.push_back(num);
+                }
+                UnLock myUnLock(input);
+                myUnLock.print();
+            }
+            else
+            {
+                cout<<"Invalid input!"<<endl;
+            }
+        }
+        else
+        {
+            cout << "Invalid input!" << endl;
         }
     }
     return 0;

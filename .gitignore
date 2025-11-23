@@ -15,3 +15,5 @@
 
 # 忽略 txt 标记文件
 *.txt
+
+try.cpp
