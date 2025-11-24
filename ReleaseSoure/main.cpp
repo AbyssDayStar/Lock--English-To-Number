@@ -25,9 +25,15 @@ int main()
             cin>>choice;// 选择加密或解密
             if(choice=='l'||choice=='L')
             {
-                cout<<"Input types(string): "<<endl;
-                string types;
-                cin>>types;
+                cout<<"Input types(string, end with -1): "<<endl;
+                vector<string> types;
+                while(true)
+                {
+                    string s;
+                    cin>>s;
+                    if(s=="-1") break;
+                    types.push_back(s);
+                }
                 Lock myLock(types);
                 myLock.print();
             }// 加密流程
