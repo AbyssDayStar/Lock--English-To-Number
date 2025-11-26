@@ -4,6 +4,14 @@ bool run = true;// 控制主循环
 bool lang=true;// true for English, false for Chinese
 int main()
 {
+    cout<<"----------------------------------———————————"<<endl;
+    cout<<"|        欢迎使用英文到字符转换程序！        |"<<endl;
+    cout<<"|  Welcome to use English to Char Converter! |"<<endl;
+    cout<<"|        最后更新时间：2025年11月26日        |"<<endl;
+    cout<<"|        Last update time: Nov 26, 2025      |"<<endl;
+    cout<<"|              By AbyssDayStar               |"<<endl;
+    cout<<"----------------------------------———————————"<<endl;
+    cout<<endl;
     cout<<"choose language / 选择语言 (e/c): "<<endl;
         char lchar;
         cin>>lchar;
