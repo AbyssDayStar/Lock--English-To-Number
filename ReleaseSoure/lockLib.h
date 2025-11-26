@@ -87,6 +87,5 @@ public:
         cout << -1;
         cout << endl;
     } // 输出内容
-    ~UnLock() { cout << "done" << endl; } // 析构函数
 };
 #endif

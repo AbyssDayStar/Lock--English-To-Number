@@ -11,54 +11,8 @@ class baseLock                                                  // 基类
 {
 protected:
     vector<int> charNum;
-    vector<string> charType; 
-    bool lan;// 定义所需数据成员
-#ifdef DEBUG
-    ~baseLock()
-    {
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Class has members:" << endl;
-        cout << "Character types: ";
-        for (string c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << "Class is free" << endl;
-        cout << endl
-             << endl;
-    }
-#endif // 预留debug析构函数
-    baseLock()
-    {
-#ifdef DEBUG
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Lock created with character types: ";
-        for (string c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Lock created with character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << endl
-             << endl;
-#endif // 预留debug信息
-    }
+    vector<string> charType;
+    bool lan; // 定义所需数据成员
 };
 class Lock : baseLock // 加密类
 {
@@ -133,6 +87,5 @@ public:
         cout << -1;
         cout << endl;
     } // 输出内容
-    ~UnLock() { cout << "done" << endl; } // 析构函数
 };
 #endif

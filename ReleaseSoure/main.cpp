@@ -4,9 +4,10 @@ bool run = true;// 控制主循环
 bool lang=true;// true for English, false for Chinese
 int main()
 {
+    system("chcp 65001");// 设置控制台为UTF-8编码，支持中文显示
     cout<<"----------------------------------———————————"<<endl;
-    cout<<"|        欢迎使用英文到字符转换程序！        |"<<endl;
-    cout<<"|  Welcome to use English to Char Converter! |"<<endl;
+    cout<<"|        欢迎使用字符到数字转换程序！        |"<<endl;
+    cout<<"|  Welcome to use Char to Number Converter! |"<<endl;
     cout<<"|        最后更新时间：2025年11月26日        |"<<endl;
     cout<<"|        Last update time: Nov 26, 2025      |"<<endl;
     cout<<"|              By AbyssDayStar               |"<<endl;
@@ -46,13 +47,6 @@ int main()
         }
         else if (choice == 'y' || choice == 'Y')
         {
-            #ifdef _WIN32
-            system("cls");
-            #elif __linux__ or __APPLE__  
-            system("clear");
-            #elif __unix__
-            system("clear");
-            #endif// 清屏命令，跨平台
             if(lang)
             {cout<<"Conver or Revert? (c/r): "<<endl;}
             else{
@@ -64,7 +58,7 @@ int main()
                 if(lang)
                 {cout<<"Input types(end with -1): "<<endl;}
                 else{
-                    cout<<"输入字符(以-1结束): "<<endl;
+                    cout<<"输入字符(以-1结束)[支持中文]: "<<endl;
                 }
                 vector<string> types;
                 while(true)
