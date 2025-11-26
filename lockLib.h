@@ -4,7 +4,7 @@
 
 #ifndef lockLib_h
 #define lockLib_h // 防止重复包含
-#define DEBUG   //调试宏定义，编译时定义此宏以启用调试信息输出
+#define DEBUG     // 调试宏定义，编译时定义此宏以启用调试信息输出
 #include <iostream>
 #include <vector>                                               //导入头文件
 using std::vector, std::cout, std::endl, std::cin, std::string; // 使用命名空间中的特定成员
@@ -12,7 +12,7 @@ class baseLock                                                  // 基类
 {
 protected:
     vector<int> charNum;
-    string charType; // 定义所需数据成员
+    vector<string> charType; // 定义所需数据成员
 #ifdef DEBUG
     ~baseLock()
     {
@@ -21,7 +21,7 @@ protected:
         cout << "There is [DEBUG]" << endl;
         cout << "Class has members:" << endl;
         cout << "Character types: ";
-        for (char c : charType)
+        for (string c : charType)
         {
             cout << c << ' ';
         }
@@ -37,23 +37,14 @@ protected:
              << endl;
     }
 #endif // 预留debug析构函数
-};
-class Lock : baseLock // 加密类
-{
-public:
-    Lock(const string type) // 构造函数：传入字符串并转换为数字
+    baseLock()
     {
-        charType = type;
-        for (int i = 0; i < charType.size(); i++)
-        {
-            charNum.push_back(charType.at(i) - '0'-'0');
-        }
 #ifdef DEBUG
         cout << endl
              << endl;
         cout << "There is [DEBUG]" << endl;
         cout << "Lock created with character types: ";
-        for (char c : charType)
+        for (string c : charType)
         {
             cout << c << ' ';
         }
@@ -67,6 +58,22 @@ public:
         cout << endl
              << endl;
 #endif // 预留debug信息
+    }
+};
+class Lock : baseLock // 加密类
+{
+public:
+    Lock(const vector<string> type) // 构造函数：传入字符串并转换为数字
+    {
+        charType = type;
+        for (int i = 0; i < charType.size(); i++)
+        {
+            string s=charType.at(i);
+            for (int j=0;j<s.size();j++){
+            charNum.push_back(s.at(j) - '0'-'0');
+            }
+            charNum.push_back(0); // 每组字符后添加分隔符0
+        }
     }
     void print()
     {
@@ -89,35 +96,24 @@ public:
         charNum = num;
         for (int i = 0; i < charNum.size(); i++)
         {
-            charType.push_back(charNum.at(i) + '0'+'0');
+            string s;
+            s.push_back(charNum.at(i)+'0'+'0');
+            charType.push_back(s);
         }
-#ifdef DEBUG
-        cout << endl
-             << endl;
-        cout << "There is [DEBUG]" << endl;
-        cout << "Lock created with character types: ";
-        for (char c : charType)
-        {
-            cout << c << ' ';
-        }
-        cout << endl;
-        cout << "Lock created with character numbers: ";
-        for (int n : charNum)
-        {
-            cout << n << ' ';
-        }
-        cout << endl;
-        cout << endl
-             << endl;
-#endif // 预留debug信息
     }
     void print()
     {
         cout << "Lock types: ";
-        for (char c : charType)
+        for (string c : charType)
         {
-            cout << c << ' ';
+            if (c=="`")
+            {
+                cout<<' ';
+                continue;
+            }
+            cout << c;
         }
+        cout<<-1;
         cout << endl;
     } // 输出内容
     ~UnLock() { cout << "done" << endl; } // 析构函数

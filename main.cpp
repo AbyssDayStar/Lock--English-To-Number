@@ -3,9 +3,6 @@
 bool run = true;// 控制主循环
 int main()
 {
-#ifdef DEBUG
-    cout << "It is [DEBUG]" << endl;
-#endif// 调试信息
     while (run)// 主循环开始
     {
         cout << "Continue? (y/n): " << endl;// 询问是否继续
@@ -28,9 +25,15 @@ int main()
             cin>>choice;// 选择加密或解密
             if(choice=='l'||choice=='L')
             {
-                cout<<"Input types(string): "<<endl;
-                string types;
-                cin>>types;
+                cout<<"Input types(string, end with -1): "<<endl;
+                vector<string> types;
+                while(true)
+                {
+                    string s;
+                    cin>>s;
+                    if(s=="-1") break;
+                    types.push_back(s);
+                }
                 Lock myLock(types);
                 myLock.print();
             }// 加密流程

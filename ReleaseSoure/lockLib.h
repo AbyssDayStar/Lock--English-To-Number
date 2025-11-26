@@ -4,7 +4,6 @@
 
 #ifndef lockLib_h
 #define lockLib_h // 防止重复包含
-
 #include <iostream>
 #include <vector>                                               //导入头文件
 using std::vector, std::cout, std::endl, std::cin, std::string; // 使用命名空间中的特定成员
@@ -51,11 +50,8 @@ public:
         for (int i = 0; i < charNum.size(); i++)
         {
             string s;
-            for (int j=0;j<charNum.at(i);j++){
-                s.push_back(charNum.at(i)+'0'+'0');
-            }
+            s.push_back(charNum.at(i)+'0'+'0');
             charType.push_back(s);
-            charType.push_back(" ");// 每组字符后添加分隔符" "
         }
     }
     void print()
@@ -63,7 +59,12 @@ public:
         cout << "Lock types: ";
         for (string c : charType)
         {
-            cout << c << ' ';
+            if (c=="`")
+            {
+                cout<<' ';
+                continue;
+            }
+            cout << c;
         }
         cout<<-1;
         cout << endl;
