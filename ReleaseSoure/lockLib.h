@@ -16,7 +16,7 @@ protected:
 class Lock : baseLock // 加密类
 {
 public:
-    Lock(const vector<string> type) // 构造函数：传入字符串并转换为数字
+    Lock(const vector<string> type,bool lang) // 构造函数：传入字符串并转换为数字，lang选择语言
     {
         charType = type;
         for (int i = 0; i < charType.size(); i++)
@@ -30,7 +30,10 @@ public:
     }
     void print()
     {
-        cout << "Lock types: ";
+        if (lang){
+        cout << "Convert types: ";}
+        else{
+        cout << "转换字符: ";}
         for (int c : charNum)
         {
             cout << c << ' ';
@@ -44,8 +47,8 @@ public:
 class UnLock : baseLock
 {
 public:
-    UnLock(const vector<int> num)
-    { // 构造函数：传入数字并转换为字符
+    UnLock(const vector<int> num,bool lang)
+    { // 构造函数：传入数字并转换为字符，lang选择语言
         charNum = num;
         for (int i = 0; i < charNum.size(); i++)
         {
@@ -56,7 +59,10 @@ public:
     }
     void print()
     {
-        cout << "Lock types: ";
+        if (lang){
+        cout << "Revert types: ";}
+        else{
+        cout << "恢复字符: ";}
         for (string c : charType)
         {
             if (c=="`")
